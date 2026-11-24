@@ -5,7 +5,7 @@ async function createUser(username, password) {
   const user = await prisma.user.create({
     data: {
       username: username,
-      password: password,
+      password: password
     },
   });
 
@@ -32,7 +32,7 @@ async function getUsers() {
 }
 
 export default {
-    createUser,
-    getUser,
-    getUsers
+  createUser,
+  getUser,
+  getUsers
 }
