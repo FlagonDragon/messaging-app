@@ -58,8 +58,17 @@ async function logInPost(req, res) {
 
 };
 
+async function protectedGet(req, res) {
+
+  return res.status(200).json({ 
+    message: "Accessed protected route succesfully!" 
+  });
+
+};
+
 export default {
   homeGet,
   signUpPost,
-  logInPost
+  logInPost,
+  protectedGet
 }
