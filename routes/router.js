@@ -5,6 +5,11 @@ const router = Router();
 
 router.get("/", controller.homeGet);
 
+router.post('/sign-up', controller.signUpPost);
+
+router.post("/log-in", controller.logInPost);
+
+
 export {
     router
 };

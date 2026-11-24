@@ -1,6 +1,10 @@
 import express from 'express';
 import { router } from './routes/router.js';
 import cors from 'cors';
+import passport from 'passport';
+import jwtStrategy from "./strategies/jwt.js";
+
+passport.use(jwtStrategy);
 
 const app = express();
 app.use(express.json());
