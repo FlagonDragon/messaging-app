@@ -48,9 +48,24 @@ async function createChat(userId1, userId2) {
   
 }
 
+async function createMessage(content, username, chatId) {
+
+  const message = await prisma.message.create({
+    data: {
+      content: content,
+      username: username,
+      chatId: Number(chatId)
+    },
+  });
+
+  console.log("Created message:", message);
+  
+}
+
 export default {
   createUser,
   getUser,
   getUsers,
-  createChat
+  createChat,
+  createMessage
 }

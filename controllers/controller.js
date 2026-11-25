@@ -80,10 +80,25 @@ async function chatPost(req, res) {
 
 };
 
+async function messagePost(req, res) {
+
+  const { content, username, chatId } = req.body;
+
+  console.log('body: ');
+
+  console.log(req.body);
+  
+  await db.createMessage(content, username, chatId);
+
+  res.status(200).json({ message: "Message created succesfully!" });
+
+};
+
 export default {
   homeGet,
   signUpPost,
   logInPost,
   protectedGet,
-  chatPost
+  chatPost,
+  messagePost
 }
