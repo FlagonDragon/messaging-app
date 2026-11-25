@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/", controller.homeGet);
 
+router.get("/users", controller.usersGet);
+
 router.post('/sign-up', controller.signUpPost);
 
 router.post("/log-in", controller.logInPost);
@@ -13,6 +15,8 @@ router.post("/log-in", controller.logInPost);
 router.get('/protected', passport.authenticate('jwt', { session: false }), controller.protectedGet);
 
 router.post("/chat", controller.chatPost);
+
+router.post("/user-chats", controller.userChatsPost);
 
 router.post("/message", controller.messagePost);
 

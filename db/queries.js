@@ -31,6 +31,19 @@ async function getUsers() {
   
 }
 
+async function getChat(chatId) {
+
+  const chat = await prisma.chat.findUnique({
+    where: { id: Number(chatId) },
+    include: {
+      users: true,
+    },
+  });
+
+  return chat;
+  
+}
+
 async function createChat(userId1, userId2) {
 
   const chat = await prisma.chat.create({
@@ -45,6 +58,34 @@ async function createChat(userId1, userId2) {
   });
 
   console.log("Created chat:", chat);
+  
+}
+
+async function getUserChats(userId) {
+
+  // const user = await prisma.user.findUnique({
+  //   where: { id: Number(userId) },
+  //   include: {
+  //     chats: true,
+  //   },
+  // });
+
+  // return user.chats;
+
+  const chats = await prisma.chat.findMany({
+    where: { 
+      users: {
+        some: {
+          id: Number(userId),
+        },
+      },
+    },
+    include: {
+      users: true,
+    },
+  });
+
+  return chats;
   
 }
 
@@ -66,6 +107,8 @@ export default {
   createUser,
   getUser,
   getUsers,
+  getChat,
   createChat,
+  getUserChats,
   createMessage
 }

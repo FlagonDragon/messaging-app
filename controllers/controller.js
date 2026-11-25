@@ -10,6 +10,16 @@ function homeGet(req, res) {
 
 };
 
+async function usersGet(req, res) {
+
+  const users = await db.getUsers();
+
+  console.log(users);
+  
+  return res.send(users);
+
+};
+
 async function signUpPost(req, res) {
 
   const { username, password } = req.body;
@@ -80,6 +90,22 @@ async function chatPost(req, res) {
 
 };
 
+async function userChatsPost(req, res) {
+
+  const { userId } = req.body;
+
+  console.log('body: ');
+
+  console.log(req.body);
+  
+  const chats = await db.getUserChats(userId);
+
+  console.log(chats);
+  
+  return res.send(chats)
+
+};
+
 async function messagePost(req, res) {
 
   const { content, username, chatId } = req.body;
@@ -96,9 +122,11 @@ async function messagePost(req, res) {
 
 export default {
   homeGet,
+  usersGet,
   signUpPost,
   logInPost,
   protectedGet,
   chatPost,
+  userChatsPost,
   messagePost
 }
