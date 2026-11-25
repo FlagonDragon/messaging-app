@@ -31,8 +31,26 @@ async function getUsers() {
   
 }
 
+async function createChat(userId1, userId2) {
+
+  const chat = await prisma.chat.create({
+    data: {
+      users: {
+        connect: [{ id: Number(userId1) }, { id: Number(userId2) }], 
+      }, 
+    },
+    include: {
+      users: true,
+    },
+  });
+
+  console.log("Created chat:", chat);
+  
+}
+
 export default {
   createUser,
   getUser,
-  getUsers
+  getUsers,
+  createChat
 }

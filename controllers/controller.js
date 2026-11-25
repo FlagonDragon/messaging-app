@@ -66,9 +66,24 @@ async function protectedGet(req, res) {
 
 };
 
+async function chatPost(req, res) {
+
+  const { userId1, userId2 } = req.body;
+
+  console.log('body: ');
+
+  console.log(req.body);
+  
+  await db.createChat(userId1, userId2);
+
+  res.status(200).json({ message: "Chat created succesfully!" });
+
+};
+
 export default {
   homeGet,
   signUpPost,
   logInPost,
-  protectedGet
+  protectedGet,
+  chatPost
 }
