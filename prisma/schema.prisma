@@ -16,4 +16,21 @@ model User {
   id    Int     @id @default(autoincrement()) 
   username  String @unique
   password String
+  chats Chat[]
+  messages Message[]
+}
+
+model Chat { 
+  id    Int   @id @default(autoincrement()) 
+  users User[]
+  messages Message[]
+}
+
+model Message { 
+  id    Int   @id @default(autoincrement())
+  content String
+  author User  @relation(fields: [username], references: [username]) 
+  username String 
+  chat Chat  @relation(fields: [chatId], references: [id]) 
+  chatId Int
 }
