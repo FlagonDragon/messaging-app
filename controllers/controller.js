@@ -91,9 +91,9 @@ async function chatPost(req, res) {
 
 };
 
-async function userChatsPost(req, res) {
+async function userChatsGet(req, res) {
 
-  const { userId } = req.body;
+  const { userId } = req.params;
 
   console.log('body: ');
 
@@ -128,6 +128,6 @@ export default {
   logInPost,
   protectedGet,
   chatPost,
-  userChatsPost,
+  userChatsGet,
   messagePost
 }

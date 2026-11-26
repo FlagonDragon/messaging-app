@@ -16,7 +16,7 @@ router.get('/protected', passport.authenticate('jwt', { session: false }), contr
 
 router.post("/chat", controller.chatPost);
 
-router.post("/user-chats", controller.userChatsPost);
+router.get("/user-chats/:userId", controller.userChatsGet);
 
 router.post("/message", controller.messagePost);
 
