@@ -58,6 +58,7 @@ async function logInPost(req, res) {
       return res.status(200).json({
         message: "Auth Passed",
         username,
+        id: user.id,
         token
       });
 
