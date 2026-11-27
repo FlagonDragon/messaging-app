@@ -104,6 +104,18 @@ async function createMessage(content, username, chatId) {
   
 }
 
+async function getChatMessages(chatId) {
+
+  const messages = await prisma.message.findMany({
+    where: { 
+      chatId: Number(chatId),
+    }
+  });
+
+  return messages;
+  
+}
+
 export default {
   createUser,
   getUser,
@@ -111,5 +123,6 @@ export default {
   getChat,
   createChat,
   getUserChats,
-  createMessage
+  createMessage,
+  getChatMessages
 }

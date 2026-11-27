@@ -121,6 +121,22 @@ async function messagePost(req, res) {
 
 };
 
+async function chatMessagesGet(req, res) {
+
+  const { chatId } = req.params;
+
+  console.log('body: ');
+
+  console.log(req.body);
+  
+  const messages = await db.getChatMessages(chatId);
+
+  console.log(messages);
+  
+  return res.send(messages)
+
+};
+
 export default {
   homeGet,
   usersGet,
@@ -129,5 +145,6 @@ export default {
   protectedGet,
   chatPost,
   userChatsGet,
-  messagePost
+  messagePost,
+  chatMessagesGet
 }

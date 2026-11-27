@@ -20,6 +20,8 @@ router.get("/user-chats/:userId", controller.userChatsGet);
 
 router.post("/message", controller.messagePost);
 
+router.get("/chat-messages/:chatId", controller.chatMessagesGet);
+
 export {
     router
 };
