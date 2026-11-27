@@ -82,6 +82,7 @@ async function getUserChats(userId) {
     },
     include: {
       users: true,
+      messages: true,
     },
   });
 
