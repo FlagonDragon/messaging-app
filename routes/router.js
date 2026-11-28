@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/", controller.homeGet);
 
+router.get("/user/:username", controller.userGet);
+
 router.get("/users", controller.usersGet);
 
 router.post('/sign-up', controller.signUpPost);

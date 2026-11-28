@@ -10,6 +10,18 @@ function homeGet(req, res) {
 
 };
 
+async function userGet(req, res) {
+
+  const { username } = req.params;
+
+  const user = await db.getUser(username);
+
+  console.log(user);
+  
+  return res.send(user);
+
+};
+
 async function usersGet(req, res) {
 
   const users = await db.getUsers();
@@ -139,6 +151,7 @@ async function chatMessagesGet(req, res) {
 
 export default {
   homeGet,
+  userGet,
   usersGet,
   signUpPost,
   logInPost,
